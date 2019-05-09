@@ -1,0 +1,15 @@
+﻿
+@if (ViewBag.tgl != null)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                @for (int i = 0; i < ViewBag.tgl.Count; i++)
+                {
+                    <th>@ViewBag.tgl[i]</th>
+                }
+            </tr>
+        </thead>
+    </table>
+}
+

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ReservBigBird.LoginNewTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
+
+<h2>Index</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+
+</p>
+<a href="~/LoginNew/Create"><i class="fa fa-id-card-o"></i> <span>Login Coba Baru</span></a>
+
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pass)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pass)
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>*@
+
+<div class="box box-body  box-primary">
+    <form id="form1">
+        <label>Daily Sales For : </label>
+        <input type="date" name="a" />
+        <input type="date" name="b" />
+        <input type="button" class="btn btn-primary btn-sm" value="Ok" id="submit" />
+    </form>
+</div>
+
+<div id="renderTable" class="box box-body box-default">
+    @Html.Partial("NewIndex")
+</div>
+
+
+<!--      Scripts / Styles     -->
+<script>
+    
+    $(document).ready(function () {
+        $('#submit').on('click', function () {
+            var tesnu = $('#form1').serialize();
+            console.log(tesnu);
+            $('#renderTable').load("NewIndex", $('#form1').serialize());
+        });
+    });
+
+</script>
+
+<style>
+    #renderTable {
+        background-color: white;
+    }
+</style>
+
+

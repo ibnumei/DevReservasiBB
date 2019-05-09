@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
+
+<section class="content-header">
+    <h1>
+       Datatable ServerSide
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+    </ol>
+    <br />
+
+</section>
+
+<section class="content container-fluid">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Datatable Server Side</h3>
+        </div>
+
+        <div class="box-body">
+            <table id="TableServer" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Pass</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+
+        $('#TableServer').DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": true, // for disable multiple column at once
+            "ordering": false,
+            "ajax": {
+                "url": "/ServerSideDT/LoadData",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": "AssetId", "name": "AssetId", "autoWidth": true },
+                { "data": "AssetCode", "name": "AssetCode", "autoWidth": true },
+                { "data": "AssetGroupName", "name": "AssetGroupName", "autoWidth": true },
+                { "data": "AssetName", "name": "AssetName", "autoWidth": true },
+                { "data": "SerialNumber", "name": "SerialNumber", "autoWidth": true },
+                { "data": "EntityName", "name": "EntityName", "autoWidth": true },
+                { "data": "SiteName", "name": "SiteName", "Contact": true },
+                { "data": "Location", "name": "Pic", "Location": true },
+                { "data": "Valuation", "name": "Valuation", "autoWidth": true },
+                
+            ]
+        });
+    }
+    
+</script>
