@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ReservBigBird.APIModel.MonitorOrder>
+
+@if (ViewBag.data != null)
+{
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>No Item</th>
+                <th>No Order</th>
+                <th>STS</th>
+                <th>DISC</th>
+                <th>Jenis</th>
+                <th>POOL</th>
+                <th>KEL TUJUAN</th>
+                <th>ALAMAT JEMPUT</th>
+                <th>TGL JEMPUT</th>
+                <th>JAM JEMPUT</th>
+                <th>TGL SELESAI</th>
+                <th>JAM SELESAI</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoItem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sts)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Jenis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pool)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KelTujuan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AlamatJemput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TglJemput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JamJemput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TglSelesei)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JamSelesei)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+    <script>
+    $(document).ready(function () {
+        $('#example1').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    });
+    </script>

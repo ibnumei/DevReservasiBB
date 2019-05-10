@@ -31,4 +31,20 @@ namespace ReservBigBird.APIModel
         public String email { get; set; }
         public String pass { get; set; }
     }
+
+    public class MonitorOrder
+    {
+        public int NoItem { get; set; }
+        public string NoOrder { get; set; }
+        public string Sts { get; set; }
+        public int Disc { get; set; }
+        public string Jenis { get; set; }
+        public string Pool { get; set; }
+        public string KelTujuan { get; set; }
+        public string AlamatJemput { get; set; }
+        public string TglJemput { get; set; }
+        public string JamJemput { get; set; }
+        public string TglSelesei { get; set; }
+        public string JamSelesei { get; set; }
+    }
 }

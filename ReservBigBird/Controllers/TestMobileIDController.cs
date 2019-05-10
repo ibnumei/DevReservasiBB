@@ -13,7 +13,6 @@ namespace ReservBigBird.Controllers
         public ActionResult Index()
         {
             var AA = Request.Browser.IsMobileDevice;
-            var BB = Request.Browser.
 
             return View();
         }

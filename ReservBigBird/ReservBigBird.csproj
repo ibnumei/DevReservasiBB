@@ -143,6 +143,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LoginNewController.cs" />
     <Compile Include="Controllers\MonitorOrderController.cs" />
+    <Compile Include="Controllers\MonitorProdController.cs" />
     <Compile Include="Controllers\PenerimaanOrderController.cs" />
     <Compile Include="Controllers\ServerSideDTController.cs" />
     <Compile Include="Controllers\TerimaOrderController.cs" />
@@ -168,6 +169,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ParamMonitorOrder.cs" />
     <Compile Include="Models\PenerimaOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -7144,6 +7146,8 @@
     <Content Include="Views\PenerimaanOrder\Index.cshtml" />
     <Content Include="Views\PenerimaanOrder\_TableDate.cshtml" />
     <Content Include="Views\ServerSideDT\Index.cshtml" />
+    <Content Include="Views\MonitorProd\Index.cshtml" />
+    <Content Include="Views\MonitorProd\_TableMonitorOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
