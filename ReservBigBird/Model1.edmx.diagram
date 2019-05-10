@@ -6,6 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="b21345dad21b47e79d055f68a1f05443" Name="Diagram1">
         <EntityTypeShape EntityType="devbigbirdModel.LoginNewTbl" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="devbigbirdModel.Account" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="devbigbirdModel.Role" Width="1.5" PointX="2.75" PointY="3.375" />
+        <EntityTypeShape EntityType="devbigbirdModel.Role_Account" Width="1.5" PointX="5" PointY="0.875" />
+        <AssociationConnector Association="devbigbirdModel.FK__Role_Acco__Accou__03317E3D" />
+        <AssociationConnector Association="devbigbirdModel.FK__Role_Acco__RoleI__0425A276" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

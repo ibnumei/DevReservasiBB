@@ -26,5 +26,8 @@ namespace ReservBigBird
         }
     
         public virtual DbSet<LoginNewTbl> LoginNewTbls { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Role_Account> Role_Account { get; set; }
     }
 }

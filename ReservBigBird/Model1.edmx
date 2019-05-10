@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="devbigbirdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="250" />
+          <Property Name="Password" Type="varchar" MaxLength="250" />
+          <Property Name="FullName" Type="varchar" MaxLength="250" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="LoginNewTbl">
           <Key>
             <PropertyRef Name="id" />
@@ -14,8 +24,60 @@
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="pass" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role_Account">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Role_Acco__Accou__03317E3D">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Role_Account" Type="Self.Role_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role_Account">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Role_Acco__RoleI__0425A276">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Role_Account" Type="Self.Role_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role_Account">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="devbigbirdModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginNewTbl" EntityType="Self.LoginNewTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role_Account" EntityType="Self.Role_Account" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Role_Acco__Accou__03317E3D" Association="Self.FK__Role_Acco__Accou__03317E3D">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Role_Account" EntitySet="Role_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Role_Acco__RoleI__0425A276" Association="Self.FK__Role_Acco__RoleI__0425A276">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Role_Account" EntitySet="Role_Account" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -32,7 +94,73 @@
         </EntityType>
         <EntityContainer Name="devbigbirdEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="LoginNewTbls" EntityType="Self.LoginNewTbl" />
+          <EntitySet Name="Accounts" EntityType="devbigbirdModel.Account" />
+          <EntitySet Name="Roles" EntityType="devbigbirdModel.Role" />
+          <EntitySet Name="Role_Account" EntityType="devbigbirdModel.Role_Account" />
+          <AssociationSet Name="FK__Role_Acco__Accou__03317E3D" Association="devbigbirdModel.FK__Role_Acco__Accou__03317E3D">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Role_Account" EntitySet="Role_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Role_Acco__RoleI__0425A276" Association="devbigbirdModel.FK__Role_Acco__RoleI__0425A276">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Role_Account" EntitySet="Role_Account" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Role_Account" Relationship="devbigbirdModel.FK__Role_Acco__Accou__03317E3D" FromRole="Account" ToRole="Role_Account" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Role_Account" Relationship="devbigbirdModel.FK__Role_Acco__RoleI__0425A276" FromRole="Role" ToRole="Role_Account" />
+        </EntityType>
+        <EntityType Name="Role_Account">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="devbigbirdModel.FK__Role_Acco__Accou__03317E3D" FromRole="Role_Account" ToRole="Account" />
+          <NavigationProperty Name="Role" Relationship="devbigbirdModel.FK__Role_Acco__RoleI__0425A276" FromRole="Role_Account" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK__Role_Acco__Accou__03317E3D">
+          <End Type="devbigbirdModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="devbigbirdModel.Role_Account" Role="Role_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role_Account">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Role_Acco__RoleI__0425A276">
+          <End Type="devbigbirdModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="devbigbirdModel.Role_Account" Role="Role_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role_Account">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -46,6 +174,35 @@
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="devbigbirdModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="devbigbirdModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role_Account">
+            <EntityTypeMapping TypeName="devbigbirdModel.Role_Account">
+              <MappingFragment StoreEntitySet="Role_Account">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
