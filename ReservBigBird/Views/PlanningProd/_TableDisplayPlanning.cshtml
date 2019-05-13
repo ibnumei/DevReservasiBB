@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ReservBigBird.APIModel.DisplayPlanning>
+
+@if (Model != null)
+{
+    <table id="example3" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>No Detail</th>
+                <th>No Order</th>
+                <th>Tgl Pakai</th>
+                <th>Jam Jemput</th>
+                <th>BUS</th>
+                <th>NIP1</th>
+                <th>HP</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoDetail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TglPakai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JamJemput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nip1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hp)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<script>
+    $(function () {
+        $('#example3').DataTable({
+            'paging': true,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': false,
+            'info': true,
+            'autoWidth': true
+        })
+    })
+</script>

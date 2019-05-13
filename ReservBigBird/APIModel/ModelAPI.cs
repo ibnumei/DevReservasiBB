@@ -34,10 +34,10 @@ namespace ReservBigBird.APIModel
 
     public class MonitorOrder
     {
-        public int NoItem { get; set; }
+        public string NoItem { get; set; }
         public string NoOrder { get; set; }
         public string Sts { get; set; }
-        public int Disc { get; set; }
+        public string Disc { get; set; }
         public string Jenis { get; set; }
         public string Pool { get; set; }
         public string KelTujuan { get; set; }
@@ -46,5 +46,19 @@ namespace ReservBigBird.APIModel
         public string JamJemput { get; set; }
         public string TglSelesei { get; set; }
         public string JamSelesei { get; set; }
+    }
+
+    public class DisplayPlanning
+    {
+        public string NoDetail { get; set; }
+        public string NoOrder { get; set; }
+        public string TglPakai { get; set; }
+        public string JamJemput { get; set; }
+        public string Bus { get; set; }
+        public string Nip1 { get; set; }
+        public string Hp { get; set; }
+        public string Popnpk { get; set; }
+        public string Popnpm { get; set; }
+        public string Poppolid { get; set; }
     }
 }

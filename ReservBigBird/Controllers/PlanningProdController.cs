@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ReservBigBird.APIModel;
+using ReservBigBird.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,20 +11,18 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using ReservBigBird.APIModel;
-using ReservBigBird.Models;
 
 namespace ReservBigBird.Controllers
 {
-    public class MonitorProdController : Controller
+    public class PlanningProdController : Controller
     {
-        // GET: MonitorProd
+        // GET: PlanningProd
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult _TableMonitorOrder(ParamMonitorOrder paramMonitor)
+        public ActionResult _TableDisplayPlanning(ParamPlanning paramPlanning)
         {
             String response = "";
             var credentials = new NetworkCredential("ac", "123");
@@ -35,16 +35,16 @@ namespace ReservBigBird.Controllers
                 try
                 {
                     //http://localhost/BBWS/Api/Orders?ordid=BC015181&ordnpt=&ordnpm=
-                    //HttpResponseMessage message = client.GetAsync("http://192.168.25.123/BBWS/Api/Orders").Result;
-                    HttpResponseMessage message = client.GetAsync("http://192.168.25.123/BBWS/Api/Orders?ordid="+ paramMonitor.NoOrder +"&ordnpt="+ paramMonitor.Perusahaan +"&ordnpm="+paramMonitor.Pemesan).Result;
+                    HttpResponseMessage message = client.GetAsync("http://192.168.25.123/BBWS/Api/Plans").Result;
+                    //HttpResponseMessage message = client.GetAsync("http://192.168.25.123/BBWS/Api/Orders?ordid=" + paramMonitor.NoOrder + "&ordnpt=" + paramMonitor.Perusahaan + "&ordnpm=" + paramMonitor.Pemesan).Result;
 
                     if (message.IsSuccessStatusCode)
                     {
-                        var serializer = new DataContractJsonSerializer(typeof(List<MonitorOrder>));
+                        var serializer = new DataContractJsonSerializer(typeof(List<DisplayPlanning>));
                         var result = message.Content.ReadAsStringAsync().Result;
                         byte[] byteArray = Encoding.UTF8.GetBytes(result);
                         MemoryStream stream = new MemoryStream(byteArray);
-                        List<MonitorOrder> resultData = serializer.ReadObject(stream) as List<MonitorOrder>;
+                        List<DisplayPlanning> resultData = serializer.ReadObject(stream) as List<DisplayPlanning>;
                         ViewBag.data = resultData.ToList();
                         //for (int i = 0; i < resultData.Count; i++)
                         //{
@@ -55,13 +55,13 @@ namespace ReservBigBird.Controllers
                         //    return View();
                         //}
 
-                        return PartialView("_TableMonitorOrder", resultData.ToList());
+                        return PartialView("_TableDisplayPlanning", resultData.ToList());
                         //====================================================================================
 
                     }
                     else
                     {
-                        return PartialView("_TableMonitorOrder");
+                        return PartialView("_TableDisplayPlanning");
                     }
                     //if(message.)
 
@@ -70,7 +70,7 @@ namespace ReservBigBird.Controllers
                 catch (Exception ex)
                 {
                     var error = ex.ToString();
-                    return PartialView("_TableMonitorOrder");
+                    return PartialView("_TableDisplayPlanning");
                 }
             }
 

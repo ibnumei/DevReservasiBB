@@ -148,6 +148,7 @@
     <Compile Include="Controllers\MonitorOrderController.cs" />
     <Compile Include="Controllers\MonitorProdController.cs" />
     <Compile Include="Controllers\PenerimaanOrderController.cs" />
+    <Compile Include="Controllers\PlanningProdController.cs" />
     <Compile Include="Controllers\ServerSideDTController.cs" />
     <Compile Include="Controllers\TerimaOrderController.cs" />
     <Compile Include="Controllers\TestMobileIDController.cs" />
@@ -174,6 +175,7 @@
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\ParamMonitorOrder.cs" />
+    <Compile Include="Models\ParamPlanning.cs" />
     <Compile Include="Models\PenerimaOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
@@ -7162,6 +7164,8 @@
     <Content Include="Views\ServerSideDT\Index.cshtml" />
     <Content Include="Views\MonitorProd\Index.cshtml" />
     <Content Include="Views\MonitorProd\_TableMonitorOrder.cshtml" />
+    <Content Include="Views\PlanningProd\Index.cshtml" />
+    <Content Include="Views\PlanningProd\_TableDisplayPlanning.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
