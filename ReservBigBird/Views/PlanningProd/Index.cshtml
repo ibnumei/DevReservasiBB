@@ -204,7 +204,7 @@
                                         <b>No Order</b>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" asp-for="TaskCode">
+                                        <input type="text" class="form-control" id="ModalNoOrder">
                                     </div>
                                     <div class="col-sm-2">
                                         <b>Nama Pemesan</b>
@@ -236,7 +236,7 @@
                                         <b>Tgl Pakai</b>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" asp-for="TaskCode">
+                                        <input type="text" class="form-control" id="ModalTglPakai">
                                     </div>
                                     <div class="col-sm-2">
 
@@ -252,7 +252,7 @@
                                         <b>Jam Jemput</b>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" asp-for="TaskCode">
+                                        <input type="text" class="form-control" id="ModalJamJemput">
                                     </div>
                                     <div class="col-sm-2">
 
@@ -440,3 +440,20 @@
         background-color: white;
     }
 </style>
+<script type="text/javascript">
+    document.getElementById('example1').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        while (target && target.nodeName != 'TR') {
+            target = target.parentElement;
+        }
+        var cells = target.cells;
+        console.log(cells);
+        $(function () {
+            $('#ModalNoOrder').val($.trim(cells[1].innerHTML));
+            $('#ModalTglPakai').val($.trim(cells[2].innerHTML));
+            $('#ModalJamJemput').val($.trim(cells[3].innerHTML));
+        });
+        
+    }
+</script>
