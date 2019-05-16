@@ -22,7 +22,7 @@
             {
                 <tr>
                     <td>
-                        <a  onclick="remove('@Html.DisplayFor(modelItem => item.Poppolid)','@Html.DisplayFor(modelItem => item.Popid)',' @Html.DisplayFor(modelItem => item.popdaow)')" id="aidi"><i class="fas fa-trash-alt"></i>  @Html.DisplayFor(modelItem => item.NoDetail) </a>
+                        <a class="btn btn-sm btn-default" onclick="remove('@Html.DisplayFor(modelItem => item.Poppolid)','@Html.DisplayFor(modelItem => item.Popid)',' @Html.DisplayFor(modelItem => item.popdaow)')" id="aidi"><i class="fas fa-trash-alt"></i>  @Html.DisplayFor(modelItem => item.NoDetail) </a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.NoOrder)
@@ -374,7 +374,8 @@
                 $('#myModalPopup').modal('toggle');
             },
             error: function (data) {
-                alert("erorr");
+                //alert("erorr");
+                swal("Error", data.responseText, "error")
             }, //
         });
         }
