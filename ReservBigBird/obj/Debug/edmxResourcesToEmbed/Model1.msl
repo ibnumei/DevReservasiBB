@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="devbigbirdModelStoreContainer" CdmEntityContainer="devbigbirdEntities">
+  <EntityContainerMapping StorageEntityContainer="devbigbirdModelStoreContainer" CdmEntityContainer="devbigbirdEntities1">
+    <EntitySetMapping Name="LinesLoginTbls">
+      <EntityTypeMapping TypeName="devbigbirdModel.LinesLoginTbl">
+        <MappingFragment StoreEntitySet="LinesLoginTbl">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_login" ColumnName="id_login" />
+          <ScalarProperty Name="nama_user" ColumnName="nama_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="LoginNewTbls">
       <EntityTypeMapping TypeName="devbigbirdModel.LoginNewTbl">
         <MappingFragment StoreEntitySet="LoginNewTbl">

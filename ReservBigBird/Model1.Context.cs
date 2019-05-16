@@ -13,10 +13,10 @@ namespace ReservBigBird
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class devbigbirdEntities : DbContext
+    public partial class devbigbirdEntities1 : DbContext
     {
-        public devbigbirdEntities()
-            : base("name=devbigbirdEntities")
+        public devbigbirdEntities1()
+            : base("name=devbigbirdEntities1")
         {
         }
     
@@ -25,6 +25,7 @@ namespace ReservBigBird
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<LinesLoginTbl> LinesLoginTbls { get; set; }
         public virtual DbSet<LoginNewTbl> LoginNewTbls { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Role> Roles { get; set; }

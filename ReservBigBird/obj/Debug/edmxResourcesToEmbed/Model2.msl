@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="devbigbirdModel1StoreContainer" CdmEntityContainer="devbigbirdAsus">
+    <EntitySetMapping Name="LinesLoginTbls">
+      <EntityTypeMapping TypeName="devbigbirdModel1.LinesLoginTbl">
+        <MappingFragment StoreEntitySet="LinesLoginTbl">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_login" ColumnName="id_login" />
+          <ScalarProperty Name="nama_user" ColumnName="nama_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginNewTbls">
+      <EntityTypeMapping TypeName="devbigbirdModel1.LoginNewTbl">
+        <MappingFragment StoreEntitySet="LoginNewTbl">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

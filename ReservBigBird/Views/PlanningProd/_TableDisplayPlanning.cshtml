@@ -12,6 +12,9 @@
                 <th>BUS</th>
                 <th>NIP1</th>
                 <th>HP</th>
+                <th >POPPOLID</th>
+                <th >POPID</th>
+                <th >POPDAOW</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +22,7 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NoDetail)
+                        <a  onclick="remove('@Html.DisplayFor(modelItem => item.Poppolid)','@Html.DisplayFor(modelItem => item.Popid)',' @Html.DisplayFor(modelItem => item.popdaow)')" id="aidi"><i class="fas fa-trash-alt"></i>  @Html.DisplayFor(modelItem => item.NoDetail) </a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.NoOrder)
@@ -39,11 +42,245 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Hp)
                     </td>
+                    <td >
+                        @Html.DisplayFor(modelItem => item.Poppolid)
+                    </td>
+                    <td >
+                        @Html.DisplayFor(modelItem => item.Popid)
+                    </td>
+                    <td >
+                        @Html.DisplayFor(modelItem => item.popdaow)
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
+
+    <div id="myModalPopup" class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title">Display Planning Order</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form asp-action="CreateTaskLine">
+                        <div class="row form-border">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+
+                                <div class="col-sm-12">
+
+
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>No Order</b>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="ModalNoOrder" readonly="readonly">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <b>Nama Pemesan</b>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="ModalNamaPemesan"  readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>No Detail</b>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="ModalNoDetail"  readonly="readonly">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <b>POOL</b>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="POOL"  readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>Tgl Pakai</b>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="ModalTglPakai"  readonly="readonly">
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                        <div class="col-sm-4">
+
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>Jam Jemput</b>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="ModalJamJemput"  readonly="readonly">
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                        <div class="col-sm-4">
+
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>Kel Tujuan</b>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="ModalKelTujuan"  readonly="readonly">
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                        <div class="col-sm-4">
+
+                                        </div>
+
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+
+                                        <div class="col-sm-2">
+                                            <b>Tujuan</b>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="ModalTujuan"  readonly="readonly">
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                        <div class="col-sm-4">
+
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>Alamat</b>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <textarea asp-for="Address" class="form-control" rows="2" id="ModalAlamat"  readonly="readonly"></textarea>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>Bus</b>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="ModalJenisBus" placeholder="Jenis Bus"  readonly="readonly">
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="ModalNoBody" placeholder="No Body"  readonly="readonly">
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="ModalNoPol" placeholder="No Pol"  readonly="readonly">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>NIP 1</b>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="ModalNamaNip1" placeholder="Nama"  readonly="readonly">
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="ModalHpNip1" placeholder="HP"  readonly="readonly">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <b>NIP 2</b>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="ModalNamaNip2" placeholder="Nama"  readonly="readonly">
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="ModalHpNip2" placeholder="HP"  readonly="readonly">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="col-sm-4">
+
+                                            </div>
+
+                                            <div class="col-sm-4">
+
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br />
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <script>
     $(function () {
         $('#example3').DataTable({
@@ -55,4 +292,90 @@
             'autoWidth': true
         })
     })
+</script>
+<script>
+    function remove(Poppolid1,Popid1,popdaow1) {
+
+        var a = $.trim(Poppolid1);
+        var b = $.trim(Popid1);
+        var c = $.trim(popdaow1);
+        console.log("ASLI="+Poppolid1,Popid1,popdaow1);
+        console.log("ASLI="+a,b,c);
+
+        $.ajax({
+            type: "GET",
+            url: "http://10.0.19.165/BBWS/Api/Plans?popordid=&popnpk=&popnpm=&popid=" + b + "&poppolid=" + a + "&popdaow=" + c,
+            //url: "http://10.0.19.165/BBWS/Api/Plans?popordid=&popnpk=&popnpm=&popid=288796&poppolid=KJ&popdaow=KJ",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                $.each(data, function (i, item) {
+
+                    if (item.NoOrder == null) { document.getElementById("ModalNoOrder").value = ""; }
+                    else { document.getElementById("ModalNoOrder").value = item.NoOrder; }
+
+                    if (item.Popnpm == null) { document.getElementById("ModalNamaPemesan").value = ""; }
+                    else { document.getElementById("ModalNamaPemesan").value = item.Popnpm; }
+
+                    if (item.NoDetail == null) { document.getElementById("ModalNoDetail").value = ""; }
+                    else { document.getElementById("ModalNoDetail").value = item.NoDetail; }
+
+                    if (item.NoOrder == null) { document.getElementById("ModalNoOrder").value = ""; }
+                    else { document.getElementById("ModalNoOrder").value = item.NoOrder; }
+
+                    if (item.Poppolid == null) { document.getElementById("POOL").value = ""; }
+                    else { document.getElementById("POOL").value = item.Poppolid; }
+
+                    if (item.TglPakai == null) { document.getElementById("ModalTglPakai").value = ""; }
+                    else { document.getElementById("ModalTglPakai").value = item.TglPakai; }
+
+                    if (item.JamJemput == null) { document.getElementById("ModalJamJemput").value = ""; }
+                    else { document.getElementById("ModalJamJemput").value = item.JamJemput; }
+
+                    if (item.KelTujuan == null) { document.getElementById("ModalKelTujuan").value = ""; }
+                    else { document.getElementById("ModalKelTujuan").value = item.KelTujuan; }
+
+                    if (item.Tujuan == null) { document.getElementById("ModalTujuan").value = ""; }
+                    else { document.getElementById("ModalTujuan").value = item.Tujuan; }
+
+                    if (item.Alamat == null) { document.getElementById("ModalAlamat").value = ""; }
+                    else { document.getElementById("ModalAlamat").value = item.Alamat; }
+
+                    if (item.JenisBus == null) { document.getElementById("ModalJenisBus").value = ""; }
+                    else { document.getElementById("ModalJenisBus").value = item.JenisBus; }
+
+                    if (item.NoBody == null) { document.getElementById("ModalNoBody").value = ""; }
+                    else { document.getElementById("ModalNoBody").value = item.NoBody; }
+
+                    if (item.NoPol == null) { document.getElementById("ModalNoPol").value = ""; }
+                    else { document.getElementById("ModalNoPol").value = item.NoPol; }
+
+                    if (item.Nip1Nama == null) { document.getElementById("ModalNamaNip1").value = ""; }
+                    else { document.getElementById("ModalNamaNip1").value = item.Nip1Nama; }
+
+                    if (item.Hp == null) { document.getElementById("ModalHpNip1").value = ""; }
+                    else { document.getElementById("ModalHpNip1").value = item.Hp; }
+
+                    if (item.Nip2Nama == null) { document.getElementById("ModalNamaNip2").value = ""; }
+                    else { document.getElementById("ModalNamaNip2").value = item.Nip2Nama; }
+
+                    if (item.Nip2Hp == null) { document.getElementById("ModalHpNip2").value = ""; }
+                    else { document.getElementById("ModalHpNip2").value = item.Nip2Hp; }
+
+
+                });
+                //var a1 = data.email;
+
+
+
+
+
+
+                $('#myModalPopup').modal('toggle');
+            },
+            error: function (data) {
+                alert("erorr");
+            }, //
+        });
+        }
 </script>

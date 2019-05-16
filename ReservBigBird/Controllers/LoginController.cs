@@ -12,7 +12,7 @@ namespace ReservBigBird.Controllers
 {
     public class LoginController : Controller
     {
-        private devbigbirdEntities db = new devbigbirdEntities();
+        private devbigbirdEntities1 db = new devbigbirdEntities1();
 
         // GET: Login
         public ActionResult Index()

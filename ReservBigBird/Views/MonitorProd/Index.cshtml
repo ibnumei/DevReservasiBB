@@ -147,9 +147,17 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                        @*<form id="form2">
+                                            <input type="text" name="vartes" />
+                                            <input type="button" class="btn btn-primary btn-sm" value="Ok" id="submit2" />
+                                        </form>*@
+                                        @*<a type="submit" value="Coba" class="btn btn-default" onclick="remove('ibnu')" id="aidi"><i class="fas fa-trash-alt"></i> Delete </a>*@
+                                         <a  onclick="remove(1,2,3);">
                                             1
                                         </a>
+                                        @*<a href="#" data-toggle="modal" data-target=".bd-example-modal-lg4">
+                                            1
+                                        </a>*@
                                     </td>
                                     <td>Order1</td>
                                     <td>NM</td>
@@ -249,13 +257,16 @@
             </div>
         </div>
 
-        
+        <div>
+            @Html.Partial("_ModalMonitorOrder")
+        </div>
 
     </div>
 </section>
 
 <!-- L A R G E  M O D A L -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+<div id="myModalPopup" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -279,13 +290,13 @@
                                         <b>Jenis Pembayaran</b>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" asp-for="TaskCode">
+                                        <input type="text" class="form-control" id="VarInjectPopup1">
                                     </div>
                                     <div class="col-sm-2">
                                         <b>Tarif Bus</b>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" asp-for="TaskCode">
+                                        <input type="text" class="form-control" id="VarInjectPopup2">
                                     </div>
                                 </div>
                                 <br />
@@ -295,7 +306,7 @@
                                         <b>Lebih Bayar</b>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" asp-for="TaskCode">
+                                        <input type="text" class="form-control" id="VarInjectPopup3">
                                     </div>
                                     <div class="col-sm-2">
                                         <b>% Diskon</b>
@@ -513,13 +524,51 @@
 </div>
 
 <script>
+    function remove(a,b,c) {
+
+        //var myId = $('#TechnicianId').val();
+        var myId = a;
+        var myId2 = b;
+        var myId3 = c;
+
+        console.log(myId+","+myId2+","+myId3);
+        $.ajax({
+            type: "GET",
+           @*url: '@Url.Action("Delete")',*@
+            url: "/api/APILoginNewTbls/"+myId,
+            //data: { id: myId},
+            // dataType: "json"
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+
+                var a1 = data.email;
+                var b1 = data.pass;
+                var c1 = data.username;
+
+                console.log(a1);
+                console.log(b1);
+                console.log(c1);
+
+                document.getElementById("VarInjectPopup1").value = a1; 
+                document.getElementById("VarInjectPopup2").value = b1;
+                document.getElementById("VarInjectPopup3").value = c1;
+
+                $('#myModalPopup').modal('toggle');
+            },
+            failure: function (data) {
+                alert(data.responseText);
+            }, //
+           });
+        }
+</script>
+<script>
     $(function () {
-        $('#example1').DataTable()
-        $('#example2').DataTable({
+        $('#example1').DataTable({
             'paging': true,
             'lengthChange': false,
             'searching': false,
-            'ordering': true,
+            'ordering': false,
             'info': true,
             'autoWidth': false
         })
@@ -534,6 +583,14 @@
             var tesnu = $('#Form1').serialize();
             console.log(tesnu);
             $('#renderTable').load("_TableMonitorOrder", $('#Form1').serialize());
+        });
+    });
+
+    $(document).ready(function () {
+        $('#submit2').on('click', function () {
+            var tesnua = $('#Form2').serialize();
+            console.log(tesnua);
+            $('#renderTable').load("_ModalMonitorOrder", $('#Form2').serialize());
         });
     });
 

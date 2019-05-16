@@ -10,6 +10,14 @@
     <Property Name="FullName" Type="varchar" MaxLength="250" />
     <Property Name="Enabled" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="LinesLoginTbl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_login" Type="int" />
+    <Property Name="nama_user" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="LoginNewTbl">
     <Key>
       <PropertyRef Name="id" />
@@ -36,7 +44,7 @@
     <Property Name="AccountId" Type="int" Nullable="false" />
     <Property Name="Enabled" Type="bit" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Role_Acco__Accou__03317E3D">
+  <Association Name="FK__Role_Acco__Accou__60A75C0F">
     <End Role="Account" Type="Self.Account" Multiplicity="1" />
     <End Role="Role_Account" Type="Self.Role_Account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -48,7 +56,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Role_Acco__RoleI__0425A276">
+  <Association Name="FK__Role_Acco__RoleI__619B8048">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
     <End Role="Role_Account" Type="Self.Role_Account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -62,14 +70,15 @@
   </Association>
   <EntityContainer Name="devbigbirdModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LinesLoginTbl" EntityType="Self.LinesLoginTbl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoginNewTbl" EntityType="Self.LoginNewTbl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role_Account" EntityType="Self.Role_Account" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Role_Acco__Accou__03317E3D" Association="Self.FK__Role_Acco__Accou__03317E3D">
+    <AssociationSet Name="FK__Role_Acco__Accou__60A75C0F" Association="Self.FK__Role_Acco__Accou__60A75C0F">
       <End Role="Account" EntitySet="Account" />
       <End Role="Role_Account" EntitySet="Role_Account" />
     </AssociationSet>
-    <AssociationSet Name="FK__Role_Acco__RoleI__0425A276" Association="Self.FK__Role_Acco__RoleI__0425A276">
+    <AssociationSet Name="FK__Role_Acco__RoleI__619B8048" Association="Self.FK__Role_Acco__RoleI__619B8048">
       <End Role="Role" EntitySet="Role" />
       <End Role="Role_Account" EntitySet="Role_Account" />
     </AssociationSet>

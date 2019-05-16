@@ -7,7 +7,7 @@ namespace ReservBigBird.Models
 {
     public class AccountModel
     {
-        private devbigbirdEntities db = new devbigbirdEntities();
+        private devbigbirdEntities1 db = new devbigbirdEntities1();
 
         public Account find(string username)
         {

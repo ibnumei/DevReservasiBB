@@ -8,7 +8,7 @@ namespace ReservBigBird.Controllers
 {
     public class ServerSideDTController : Controller
     {
-        private devbigbirdEntities db = new devbigbirdEntities();
+        private devbigbirdEntities1 db = new devbigbirdEntities1();
 
         // GET: ServerSideDT
         public ActionResult Index()

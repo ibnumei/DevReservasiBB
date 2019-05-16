@@ -75,5 +75,18 @@ namespace ReservBigBird.Controllers
             }
 
         }
+
+        public ActionResult _ModalMonitorOrder(String vartes)
+        {
+            var aa = vartes;
+            return PartialView("_ModalMonitorOrder");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(String id)
+        {
+            var aa = id;
+            return View();
+        }
     }
 }

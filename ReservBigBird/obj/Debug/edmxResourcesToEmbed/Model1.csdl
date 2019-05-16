@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="devbigbirdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LinesLoginTbl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_login" Type="Int32" />
+    <Property Name="nama_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="LoginNewTbl">
     <Key>
       <PropertyRef Name="id" />
@@ -9,16 +17,17 @@
     <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityContainer Name="devbigbirdEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="devbigbirdEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LinesLoginTbls" EntityType="Self.LinesLoginTbl" />
     <EntitySet Name="LoginNewTbls" EntityType="Self.LoginNewTbl" />
     <EntitySet Name="Accounts" EntityType="devbigbirdModel.Account" />
     <EntitySet Name="Roles" EntityType="devbigbirdModel.Role" />
     <EntitySet Name="Role_Account" EntityType="devbigbirdModel.Role_Account" />
-    <AssociationSet Name="FK__Role_Acco__Accou__03317E3D" Association="devbigbirdModel.FK__Role_Acco__Accou__03317E3D">
+    <AssociationSet Name="FK__Role_Acco__Accou__60A75C0F" Association="devbigbirdModel.FK__Role_Acco__Accou__60A75C0F">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="Role_Account" EntitySet="Role_Account" />
     </AssociationSet>
-    <AssociationSet Name="FK__Role_Acco__RoleI__0425A276" Association="devbigbirdModel.FK__Role_Acco__RoleI__0425A276">
+    <AssociationSet Name="FK__Role_Acco__RoleI__619B8048" Association="devbigbirdModel.FK__Role_Acco__RoleI__619B8048">
       <End Role="Role" EntitySet="Roles" />
       <End Role="Role_Account" EntitySet="Role_Account" />
     </AssociationSet>
@@ -32,7 +41,7 @@
     <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="Enabled" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Role_Account" Relationship="devbigbirdModel.FK__Role_Acco__Accou__03317E3D" FromRole="Account" ToRole="Role_Account" />
+    <NavigationProperty Name="Role_Account" Relationship="devbigbirdModel.FK__Role_Acco__Accou__60A75C0F" FromRole="Account" ToRole="Role_Account" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -41,7 +50,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="Enabled" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Role_Account" Relationship="devbigbirdModel.FK__Role_Acco__RoleI__0425A276" FromRole="Role" ToRole="Role_Account" />
+    <NavigationProperty Name="Role_Account" Relationship="devbigbirdModel.FK__Role_Acco__RoleI__619B8048" FromRole="Role" ToRole="Role_Account" />
   </EntityType>
   <EntityType Name="Role_Account">
     <Key>
@@ -51,10 +60,10 @@
     <Property Name="RoleId" Type="Int32" Nullable="false" />
     <Property Name="AccountId" Type="Int32" Nullable="false" />
     <Property Name="Enabled" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Account" Relationship="devbigbirdModel.FK__Role_Acco__Accou__03317E3D" FromRole="Role_Account" ToRole="Account" />
-    <NavigationProperty Name="Role" Relationship="devbigbirdModel.FK__Role_Acco__RoleI__0425A276" FromRole="Role_Account" ToRole="Role" />
+    <NavigationProperty Name="Account" Relationship="devbigbirdModel.FK__Role_Acco__Accou__60A75C0F" FromRole="Role_Account" ToRole="Account" />
+    <NavigationProperty Name="Role" Relationship="devbigbirdModel.FK__Role_Acco__RoleI__619B8048" FromRole="Role_Account" ToRole="Role" />
   </EntityType>
-  <Association Name="FK__Role_Acco__Accou__03317E3D">
+  <Association Name="FK__Role_Acco__Accou__60A75C0F">
     <End Type="devbigbirdModel.Account" Role="Account" Multiplicity="1" />
     <End Type="devbigbirdModel.Role_Account" Role="Role_Account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -66,7 +75,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Role_Acco__RoleI__0425A276">
+  <Association Name="FK__Role_Acco__RoleI__619B8048">
     <End Type="devbigbirdModel.Role" Role="Role" Multiplicity="1" />
     <End Type="devbigbirdModel.Role_Account" Role="Role_Account" Multiplicity="*" />
     <ReferentialConstraint>
