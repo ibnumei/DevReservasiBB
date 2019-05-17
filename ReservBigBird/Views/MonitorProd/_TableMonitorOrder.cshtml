@@ -5,8 +5,8 @@
     <table id="example3" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>No Item</th>
                 <th>No Order</th>
+                <th>No Item</th>
                 <th>STS</th>
                 <th>DISC</th>
                 <th>Jenis</th>
@@ -24,12 +24,10 @@
             {
                 <tr>
                     <td>
-                        <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg3">
-                            @Html.DisplayFor(modelItem => item.NoItem)
-                        </a>
+                        <a class="btn btn-sm btn-default" onclick="get('@Html.DisplayFor(modelItem => item.NoOrder)')" id="aidi"><i class="fas fa-trash-alt"></i>  @Html.DisplayFor(modelItem => item.NoOrder) </a>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NoOrder)
+                        @Html.DisplayFor(modelItem => item.NoItem)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Sts)
@@ -68,7 +66,7 @@
     </table>
 }
 
-    <div class="modal fade bd-example-modal-lg3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div id="myModalPopup" class="modal fade bd-example-modal-lg3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -92,13 +90,13 @@
                                             <b>Jenis Pembayaran</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="JenisPemby">
                                         </div>
                                         <div class="col-sm-2">
                                             <b>Tarif Bus</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="TarifBus">
                                         </div>
                                     </div>
                                     <br />
@@ -108,13 +106,13 @@
                                             <b>Lebih Bayar</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="LbhBayar">
                                         </div>
                                         <div class="col-sm-2">
                                             <b>% Diskon</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="Diskon">
                                         </div>
                                     </div>
                                     <br />
@@ -124,13 +122,13 @@
                                             <b>Biaya Pembatalan</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="BiayaPembatalan">
                                         </div>
                                         <div class="col-sm-2">
                                             <b>RP Diskon</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="RpDiskon">
                                         </div>
                                     </div>
                                     <br />
@@ -146,7 +144,7 @@
                                             <b>Total Pembayaran</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="TotalPembayaran">
                                         </div>
                                     </div>
                                     <br />
@@ -162,7 +160,7 @@
                                             <b>Sudah Dibayar</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="SdhDibayar">
                                         </div>
                                     </div>
                                     <br />
@@ -178,7 +176,7 @@
                                             <b>Sisa Pembayaran</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="SisaPembyran">
                                         </div>
                                     </div>
                                     <br />
@@ -194,7 +192,7 @@
                                             <b>PPH 23</b>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" asp-for="TaskCode">
+                                            <input type="text" class="form-control" id="pph23">
                                         </div>
                                     </div>
                                     <br />
@@ -233,7 +231,6 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary btn-lg">Simpan</button>
                 </div>
             </div>
         </div>
@@ -244,10 +241,67 @@
             $('#example3').DataTable({
                 'paging': true,
                 'lengthChange': true,
-                'searching': true,
+                'searching': false,
                 'ordering': false,
                 'info': true,
                 'autoWidth': true
             })
         })
+    </script>
+    <script>
+        function get(NoOrder1) {
+
+            var a = $.trim(NoOrder1);
+
+            $.ajax({
+                type: "GET",
+                url: "http://10.0.19.165/BBWS/Api/Orders?ordid=" + NoOrder1 + "&ordnpt=&ordnpm=&kondisi=",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    $.each(data, function (i, item) {
+
+                        if (item.JenisPembayaran == null) { document.getElementById("JenisPemby ").value = ""; }
+                        else { document.getElementById("JenisPemby ").value = item.JenisPembayaran; }
+
+                        if (item.LebihBayar == null) { document.getElementById("LbhBayar").value = ""; }
+                        else { document.getElementById("LbhBayar").value = item.LebihBayar; }
+
+                        if (item.BiayaBatal == null) { document.getElementById("BiayaPembatalan").value = ""; }
+                        else { document.getElementById("BiayaPembatalan").value = item.BiayaBatal; }
+
+                        if (item.TarifBus == null) { document.getElementById("TarifBus").value = ""; }
+                        else { document.getElementById("TarifBus").value = item.TarifBus; }
+
+                        if (item.Disc == null) { document.getElementById("Diskon").value = ""; }
+                        else { document.getElementById("Diskon").value = item.Disc; }
+
+                        if (item.RpDiskon == null) { document.getElementById("RpDiskon").value = ""; }
+                        else { document.getElementById("RpDiskon").value = item.RpDiskon; }
+
+                        if (item.TotalBayar == null) { document.getElementById("TotalPembayaran ").value = ""; }
+                        else { document.getElementById("TotalPembayaran ").value = item.TotalBayar; }
+
+                        if (item.SudahDibayar == null) { document.getElementById("SdhDibayar").value = ""; }
+                        else { document.getElementById("SdhDibayar").value = item.SudahDibayar; }
+
+                        if (item.SisaPembayaran == null) { document.getElementById("SisaPembyran").value = ""; }
+                        else { document.getElementById("SisaPembyran").value = item.SisaPembayaran; }
+
+                        if (item.Pph23 == null) { document.getElementById("pph23").value = ""; }
+                        else { document.getElementById("pph23").value = item.Pph23; }
+
+                       
+
+                    });
+
+
+                    $('#myModalPopup').modal('toggle');
+                },
+                error: function (data) {
+                    //alert("erorr");
+                    swal("Error", data.responseText, "error")
+                }, //
+            });
+        }
     </script>

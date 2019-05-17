@@ -22,7 +22,7 @@
             {
                 <tr>
                     <td>
-                        <a class="btn btn-sm btn-default" onclick="remove('@Html.DisplayFor(modelItem => item.Poppolid)','@Html.DisplayFor(modelItem => item.Popid)',' @Html.DisplayFor(modelItem => item.popdaow)')" id="aidi"><i class="fas fa-trash-alt"></i>  @Html.DisplayFor(modelItem => item.NoDetail) </a>
+                        <a class="btn btn-sm btn-default" onclick="get('@Html.DisplayFor(modelItem => item.Poppolid)','@Html.DisplayFor(modelItem => item.Popid)',' @Html.DisplayFor(modelItem => item.popdaow)')" id="aidi"><i class="fas fa-trash-alt"></i>  @Html.DisplayFor(modelItem => item.NoDetail) </a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.NoOrder)
@@ -294,7 +294,7 @@
     })
 </script>
 <script>
-    function remove(Poppolid1,Popid1,popdaow1) {
+    function get(Poppolid1,Popid1,popdaow1) {
 
         var a = $.trim(Poppolid1);
         var b = $.trim(Popid1);

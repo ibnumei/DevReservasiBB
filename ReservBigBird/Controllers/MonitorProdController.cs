@@ -34,9 +34,7 @@ namespace ReservBigBird.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    //http://localhost/BBWS/Api/Orders?ordid=BC015181&ordnpt=&ordnpm=
-                    //HttpResponseMessage message = client.GetAsync("http://192.168.25.123/BBWS/Api/Orders").Result;
-                    HttpResponseMessage message = client.GetAsync("http://192.168.25.123/BBWS/Api/Orders?ordid="+ paramMonitor.NoOrder +"&ordnpt="+ paramMonitor.Perusahaan +"&ordnpm="+paramMonitor.Pemesan).Result;
+                    HttpResponseMessage message = client.GetAsync("http://10.0.19.165/BBWS/Api/Orders?ordid=" + paramMonitor.NoOrder +"&ordnpt="+ paramMonitor.Perusahaan +"&ordnpm="+paramMonitor.Pemesan+"&kondisi="+paramMonitor.KondisiOrder).Result;
 
                     if (message.IsSuccessStatusCode)
                     {
@@ -76,17 +74,17 @@ namespace ReservBigBird.Controllers
 
         }
 
-        public ActionResult _ModalMonitorOrder(String vartes)
-        {
-            var aa = vartes;
-            return PartialView("_ModalMonitorOrder");
-        }
+        //public ActionResult _ModalMonitorOrder(String vartes)
+        //{
+        //    var aa = vartes;
+        //    return PartialView("_ModalMonitorOrder");
+        //}
 
-        [HttpGet]
-        public ActionResult Delete(String id)
-        {
-            var aa = id;
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult Delete(String id)
+        //{
+        //    var aa = id;
+        //    return View();
+        //}
     }
 }
