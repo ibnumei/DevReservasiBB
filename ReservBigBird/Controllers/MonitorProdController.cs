@@ -34,7 +34,7 @@ namespace ReservBigBird.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    HttpResponseMessage message = client.GetAsync("http://10.0.19.165/BBWS/Api/Orders?ordid=" + paramMonitor.NoOrder +"&ordnpt="+ paramMonitor.Perusahaan +"&ordnpm="+paramMonitor.Pemesan+"&kondisi="+paramMonitor.KondisiOrder).Result;
+                    HttpResponseMessage message = client.GetAsync("http://localhost:57276/Api/Orders?ordid=" + paramMonitor.NoOrder +"&ordnpt="+ paramMonitor.Perusahaan +"&ordnpm="+paramMonitor.Pemesan+"&kondisi="+paramMonitor.KondisiOrder).Result;
 
                     if (message.IsSuccessStatusCode)
                     {

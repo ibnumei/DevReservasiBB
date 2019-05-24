@@ -170,6 +170,7 @@
     <Compile Include="Controllers\PlanningProdController.cs" />
     <Compile Include="Controllers\ServerSideDTController.cs" />
     <Compile Include="Controllers\TerimaOrderController.cs" />
+    <Compile Include="Controllers\TerimaOrderProdRevisiController.cs" />
     <Compile Include="Controllers\TestMobileIDController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -6410,6 +6411,7 @@
     <Content Include="Content\dist\css\skins\skin-yellow.min.css" />
     <Content Include="Content\dist\css\skins\_all-skins.css" />
     <Content Include="Content\dist\css\skins\_all-skins.min.css" />
+    <Content Include="Content\dist\img\ajax-loader.gif" />
     <Content Include="Content\dist\img\avatar-01.png" />
     <Content Include="Content\dist\img\avatar.png" />
     <Content Include="Content\dist\img\avatar04.png" />
@@ -7156,7 +7158,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -7189,6 +7193,7 @@
     <Content Include="Views\PlanningProd\Index.cshtml" />
     <Content Include="Views\PlanningProd\_TableDisplayPlanning.cshtml" />
     <Content Include="Views\MonitorProd\_ModalMonitorOrder.cshtml" />
+    <Content Include="Views\TerimaOrderProdRevisi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />

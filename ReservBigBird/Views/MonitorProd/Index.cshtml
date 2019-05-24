@@ -258,6 +258,10 @@
             </div>
 
             <div id="renderTable" class="box">
+
+                @*untuk loader halaman*@
+                <div id="divLoader" style="display:none;text-align:center"> <img src="~/Content/dist/img/ajax-loader.gif" alt="Loader" /> </div>
+
                 @Html.Partial("_TableMonitorOrder")
             </div>
         </div>
@@ -610,6 +614,7 @@
 
     $(document).ready(function () {
         $('#submit').on('click', function () {
+            $("#divLoader").show(); 
             var tesnu = $('#Form1').serialize();
 
             var count = 0;
@@ -620,7 +625,9 @@
             console.log(count);
 
             console.log(tesnu);
+            
             if (count < 4) {
+                //$("#divLoader").show(); 
                 $('#renderTable').load("_TableMonitorOrder", $('#Form1').serialize());
             }
             else {

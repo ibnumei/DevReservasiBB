@@ -63,4 +63,148 @@ namespace ReservBigBird.APIModel
         public string Poppolid { get; set; }
         public string popdaow { get; set; }
     }
+
+    //public class ListTgl
+    //{
+    //    public string Date { get; set; }
+    //    public int Value { get; set; }
+    //}
+
+    //public class TerimaOrder
+    //{
+    //    public string poolName { get; set; }
+    //    public IList<ListTgl> ListTgl { get; set; }
+    //}
+
+
+    public class ListJml
+    {
+        public int jml { get; set; }
+    }
+
+    public class Datum
+    {
+        public string poolName { get; set; }
+        public IList<ListJml> listJml { get; set; }
+    }
+
+    public class TerimaOrder
+    {
+        public IList<Datum> data { get; set; }
+        public int stck { get; set; }
+        public string jnb { get; set; }
+    }
+
+    public class ListJml2
+    {
+        public int jml { get; set; }
+    }
+
+    public class TerimaOrder2
+    {
+        public string poolName { get; set; }
+        public int stc { get; set; }
+        public IList<ListJml2> listJml { get; set; }
+    }
+
+    //public class ListJml
+    //{
+    //    public int jml { get; set; }
+    //}
+
+    //public class TerimaOrder
+    //{
+    //    public string poolName { get; set; }
+    //    public IList<ListJml> listJml { get; set; }
+    //}
+
+    public class BudgetStore
+    {
+        public int budget { get; set; }
+        public int remaining { get; set; }
+    }
+
+    public class Denomination
+    {
+        public int id { get; set; }
+        public int currencyIdFk { get; set; }
+        public int nominal { get; set; }
+    }
+
+    public class Currency
+    {
+        public string sign { get; set; }
+        public string name { get; set; }
+        public IList<Denomination> denominations { get; set; }
+    }
+
+    public class Store
+    {
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public object Location { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Regional { get; set; }
+        public int StoreTypeId { get; set; }
+        public object Address2 { get; set; }
+        public object Address3 { get; set; }
+        public object Address4 { get; set; }
+        public string WarehouseId { get; set; }
+        public string CustomerIdStore { get; set; }
+    }
+
+    public class Warehouse
+    {
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public object Type { get; set; }
+        public string Address { get; set; }
+        public object Address2 { get; set; }
+        public object Address3 { get; set; }
+        public object Address4 { get; set; }
+        public string City { get; set; }
+        public string Regional { get; set; }
+        public object Division { get; set; }
+    }
+
+    public class Bank
+    {
+        public string bankId { get; set; }
+        public string bankName { get; set; }
+        public string account { get; set; }
+    }
+
+    public class Possition
+    {
+        public int id { get; set; }
+        public string possitionId { get; set; }
+        public string possitionName { get; set; }
+    }
+
+    public class Employee
+    {
+        public int id { get; set; }
+        public string employeeId { get; set; }
+        public string name { get; set; }
+        public string passwordHash { get; set; }
+        public string passwordSalt { get; set; }
+        public string passwordaja { get; set; }
+        public Possition possition { get; set; }
+    }
+
+    public class storedata
+    {
+        public string deviceCode { get; set; }
+        public BudgetStore budgetStore { get; set; }
+        public Currency currency { get; set; }
+        public object customerData { get; set; }
+        public Store store { get; set; }
+        public Warehouse warehouse { get; set; }
+        public IList<Bank> banks { get; set; }
+        public IList<Employee> employees { get; set; }
+    }
+
 }

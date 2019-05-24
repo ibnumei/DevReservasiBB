@@ -2,6 +2,8 @@
 
 @if (Model != null)
 {
+
+
     <table id="example3" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -64,244 +66,249 @@
 
         </tbody>
     </table>
+    <script>
+        $("#divLoader").hide();
+    </script>
 }
 
-    <div id="myModalPopup" class="modal fade bd-example-modal-lg3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Pembayaran</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+<div id="myModalPopup" class="modal fade bd-example-modal-lg3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Pembayaran</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-                <div class="modal-body">
+            <div class="modal-body">
 
-                    <form asp-action="CreateTaskLine">
-                        <div class="row form-border">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
+                <form asp-action="CreateTaskLine">
+                    <div class="row form-border">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
 
-                                <div class="col-sm-12">
+                            <div class="col-sm-12">
 
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <b>Jenis Pembayaran</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="JenisPemby">
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <b>Tarif Bus</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="TarifBus">
-                                        </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <b>Jenis Pembayaran</b>
                                     </div>
-                                    <br />
-
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <b>Lebih Bayar</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="LbhBayar">
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <b>% Diskon</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="Diskon">
-                                        </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="JenisPemby">
                                     </div>
-                                    <br />
-
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <b>Biaya Pembatalan</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="BiayaPembatalan">
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <b>RP Diskon</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="RpDiskon">
-                                        </div>
+                                    <div class="col-sm-2">
+                                        <b>Tarif Bus</b>
                                     </div>
-                                    <br />
-
-                                    <div class="row">
-                                        <div class="col-sm-2">
-
-                                        </div>
-                                        <div class="col-sm-4">
-
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <b>Total Pembayaran</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="TotalPembayaran">
-                                        </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="TarifBus">
                                     </div>
-                                    <br />
+                                </div>
+                                <br />
 
-                                    <div class="row">
-                                        <div class="col-sm-2">
-
-                                        </div>
-                                        <div class="col-sm-4">
-
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <b>Sudah Dibayar</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="SdhDibayar">
-                                        </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <b>Lebih Bayar</b>
                                     </div>
-                                    <br />
-
-                                    <div class="row">
-                                        <div class="col-sm-2">
-
-                                        </div>
-                                        <div class="col-sm-4">
-
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <b>Sisa Pembayaran</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="SisaPembyran">
-                                        </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="LbhBayar">
                                     </div>
-                                    <br />
-
-                                    <div class="row">
-                                        <div class="col-sm-2">
-
-                                        </div>
-                                        <div class="col-sm-4">
-
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <b>PPH 23</b>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="pph23">
-                                        </div>
+                                    <div class="col-sm-2">
+                                        <b>% Diskon</b>
                                     </div>
-                                    <br />
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="Diskon">
+                                    </div>
+                                </div>
+                                <br />
 
-                                    <div class="row">
-                                        <div class="col-sm-2">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <b>Biaya Pembatalan</b>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="BiayaPembatalan">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <b>RP Diskon</b>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="RpDiskon">
+                                    </div>
+                                </div>
+                                <br />
 
-                                        </div>
-                                        <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-sm-2">
 
-                                        </div>
-                                        <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-4">
 
-                                        </div>
-                                        <div class="col-sm-4">
-                                            @*<button type="submit" class="btn btn-success btn-lg">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <b>Total Pembayaran</b>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="TotalPembayaran">
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-sm-2">
+
+                                    </div>
+                                    <div class="col-sm-4">
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <b>Sudah Dibayar</b>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="SdhDibayar">
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-sm-2">
+
+                                    </div>
+                                    <div class="col-sm-4">
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <b>Sisa Pembayaran</b>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="SisaPembyran">
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-sm-2">
+
+                                    </div>
+                                    <div class="col-sm-4">
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <b>PPH 23</b>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="pph23">
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-sm-2">
+
+                                    </div>
+                                    <div class="col-sm-4">
+
+                                    </div>
+                                    <div class="col-sm-2">
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @*<button type="submit" class="btn btn-success btn-lg">
                                                 Simpan
                                             </button>
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             <button type="submit" class="btn btn-danger btn-lg">
                                                 Batal
                                             </button>*@
-                                        </div>
                                     </div>
-                                    <br />
-
                                 </div>
-
+                                <br />
 
                             </div>
+
+
                         </div>
-                    </form>
+                    </div>
+                </form>
 
 
-                </div>
+            </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Batal</button>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Batal</button>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        $(function () {
-            $('#example3').DataTable({
-                'paging': true,
-                'lengthChange': true,
-                'searching': false,
-                'ordering': false,
-                'info': true,
-                'autoWidth': true
-            })
+
+
+<script>
+    $(function () {
+        $('#example3').DataTable({
+            'paging': true,
+            'lengthChange': true,
+            'searching': false,
+            'ordering': false,
+            'info': true,
+            'autoWidth': true
         })
-    </script>
-    <script>
-        function get(NoOrder1) {
+    })
+</script>
+<script>
+    function get(NoOrder1) {
 
-            var a = $.trim(NoOrder1);
+        var a = $.trim(NoOrder1);
 
-            $.ajax({
-                type: "GET",
-                url: "http://10.0.19.165/BBWS/Api/Orders?ordid=" + NoOrder1 + "&ordnpt=&ordnpm=&kondisi=",
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    $.each(data, function (i, item) {
+        $.ajax({
+            type: "GET",
+            url: "http://10.0.19.165/BBWS/Api/Orders?ordid=" + NoOrder1 + "&ordnpt=&ordnpm=&kondisi=",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                $.each(data, function (i, item) {
 
-                        if (item.JenisPembayaran == null) { document.getElementById("JenisPemby ").value = ""; }
-                        else { document.getElementById("JenisPemby ").value = item.JenisPembayaran; }
+                    if (item.JenisPembayaran == null) { document.getElementById("JenisPemby ").value = ""; }
+                    else { document.getElementById("JenisPemby ").value = item.JenisPembayaran; }
 
-                        if (item.LebihBayar == null) { document.getElementById("LbhBayar").value = ""; }
-                        else { document.getElementById("LbhBayar").value = item.LebihBayar; }
+                    if (item.LebihBayar == null) { document.getElementById("LbhBayar").value = ""; }
+                    else { document.getElementById("LbhBayar").value = item.LebihBayar; }
 
-                        if (item.BiayaBatal == null) { document.getElementById("BiayaPembatalan").value = ""; }
-                        else { document.getElementById("BiayaPembatalan").value = item.BiayaBatal; }
+                    if (item.BiayaBatal == null) { document.getElementById("BiayaPembatalan").value = ""; }
+                    else { document.getElementById("BiayaPembatalan").value = item.BiayaBatal; }
 
-                        if (item.TarifBus == null) { document.getElementById("TarifBus").value = ""; }
-                        else { document.getElementById("TarifBus").value = item.TarifBus; }
+                    if (item.TarifBus == null) { document.getElementById("TarifBus").value = ""; }
+                    else { document.getElementById("TarifBus").value = item.TarifBus; }
 
-                        if (item.Disc == null) { document.getElementById("Diskon").value = ""; }
-                        else { document.getElementById("Diskon").value = item.Disc; }
+                    if (item.Disc == null) { document.getElementById("Diskon").value = ""; }
+                    else { document.getElementById("Diskon").value = item.Disc; }
 
-                        if (item.RpDiskon == null) { document.getElementById("RpDiskon").value = ""; }
-                        else { document.getElementById("RpDiskon").value = item.RpDiskon; }
+                    if (item.RpDiskon == null) { document.getElementById("RpDiskon").value = ""; }
+                    else { document.getElementById("RpDiskon").value = item.RpDiskon; }
 
-                        if (item.TotalBayar == null) { document.getElementById("TotalPembayaran ").value = ""; }
-                        else { document.getElementById("TotalPembayaran ").value = item.TotalBayar; }
+                    if (item.TotalBayar == null) { document.getElementById("TotalPembayaran ").value = ""; }
+                    else { document.getElementById("TotalPembayaran ").value = item.TotalBayar; }
 
-                        if (item.SudahDibayar == null) { document.getElementById("SdhDibayar").value = ""; }
-                        else { document.getElementById("SdhDibayar").value = item.SudahDibayar; }
+                    if (item.SudahDibayar == null) { document.getElementById("SdhDibayar").value = ""; }
+                    else { document.getElementById("SdhDibayar").value = item.SudahDibayar; }
 
-                        if (item.SisaPembayaran == null) { document.getElementById("SisaPembyran").value = ""; }
-                        else { document.getElementById("SisaPembyran").value = item.SisaPembayaran; }
+                    if (item.SisaPembayaran == null) { document.getElementById("SisaPembyran").value = ""; }
+                    else { document.getElementById("SisaPembyran").value = item.SisaPembayaran; }
 
-                        if (item.Pph23 == null) { document.getElementById("pph23").value = ""; }
-                        else { document.getElementById("pph23").value = item.Pph23; }
-
-                       
-
-                    });
+                    if (item.Pph23 == null) { document.getElementById("pph23").value = ""; }
+                    else { document.getElementById("pph23").value = item.Pph23; }
 
 
-                    $('#myModalPopup').modal('toggle');
-                },
-                error: function (data) {
-                    //alert("erorr");
-                    swal("Error", data.responseText, "error")
-                }, //
-            });
-        }
-    </script>
+
+                });
+
+
+                $('#myModalPopup').modal('toggle');
+            },
+            error: function (data) {
+                //alert("erorr");
+                swal("Error", data.responseText, "error")
+            }, //
+        });
+    }
+</script>

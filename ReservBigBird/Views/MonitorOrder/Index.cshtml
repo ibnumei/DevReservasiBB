@@ -126,9 +126,9 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table  table-striped">
                             <thead>
-                                <tr>
+                                <tr style="background-color:#808080;color:#ffffff;">
                                     <th>No Item</th>
                                     <th>No Order</th>
                                     <th>STS</th>
@@ -146,7 +146,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                        <a class="btn btn-sm" style="background-color: #e4e4e4; color: #444; border-color: #888484; cursor: pointer;" href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
                                             1
                                         </a>
                                     </td>
@@ -485,10 +485,13 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Pembayaran</h3>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+
+                <h3 class="modal-title" style="text-align:center">Pembayaran</h3>
+
             </div>
 
             <div class="modal-body">
@@ -740,14 +743,13 @@
 
 <script>
     $(function () {
-        $('#example1').DataTable()
-        $('#example2').DataTable({
+        $('#example1').DataTable({
             'paging': true,
-            'lengthChange': false,
+            'lengthChange': true,
             'searching': false,
-            'ordering': true,
+            'ordering': false,
             'info': true,
-            'autoWidth': false
+            'autoWidth': true
         })
     })
 </script>
