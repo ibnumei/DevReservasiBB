@@ -129,34 +129,38 @@
                                     <th>BUS</th>
                                     <th>NIP1</th>
                                     <th>HP</th>
+                                    <td>Aksi</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                    <td class="nr1">1</td>
+                                    @*<a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
                                             1
-                                        </a>
-                                    </td>
-                                    <td>Order1</td>
-                                    <td>8/4/2019</td>
-                                    <td>12:25 AM</td>
+                                        </a>*@
+                                    @*<a class="btn btn-default testnu">1</a>*@
+
+                                    <td class="nr2">Order1</td>
+                                    <td class="nr3">8/4/2019</td>
+                                    <td class="nr4">12:25 AM</td>
                                     <td>BUS 1</td>
                                     <td>Agus</td>
                                     <td>082112213454</td>
+                                    <td>  <button type="button" class="use-address">Click Me</button></td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                    <td class="nr1">2</td>
+                                    @*<a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
                                             2
-                                        </a>
-                                    </td>
-                                    <td>Order2</td>
-                                    <td>9/4/2019</td>
-                                    <td>13:25 AM</td>
+                                        </a>*@
+                                    @*<a class="btn btn-default testnu">2</a>*@
+                                    <td class="nr2">Order2</td>
+                                    <td class="nr3">9/4/2019</td>
+                                    <td class="nr4">13:25 AM</td>
                                     <td>BUS 2</td>
                                     <td>Jani</td>
                                     <td>182112213454</td>
+                                    <td>  <button type="button" class="use-address">Click Me</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -168,12 +172,37 @@
             <div id="renderTable" class="box">
                 @Html.Partial("_TableDisplayPlanning")
             </div>
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> Hasil Table dari javascript </h3>
+
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table id="TableMasuk" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Kolom 1</th>
+                                    <th>Kolom 2</th>
+                                    <th>Kolom 3</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblAppendHere"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </div>
 </section>
 
 <!-- L A R G E  M O D A L -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="myModal13" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -433,7 +462,7 @@
             if (document.getElementById("NamaPemesan").value == "") { count = count + 1 }
             if (document.getElementById("Pool").value == "") { count = count + 1 }
             console.log(count);
-            
+
             console.log(tesnu);
             if (count < 4) {
                 $('#renderTable').load("_TableDisplayPlanning", $('#Form1').serialize());
@@ -441,7 +470,7 @@
             else {
                 swal("Perhatikan Kolom", "Silahkan Isi Salah Satu Kolom di Form Tersebut", "warning");
             }
-           
+
         });
     });
 
@@ -453,7 +482,7 @@
     }
 </style>
 <script type="text/javascript">
-    document.getElementById('example1').onclick = function (event) {
+    document.getElementsByName('example2').onclick = function (event) {
         event = event || window.event;
         var target = event.target || event.srcElement;
         while (target && target.nodeName != 'TR') {
@@ -462,10 +491,86 @@
         var cells = target.cells;
         console.log(cells);
         $(function () {
+
+            alert(cells[1].innerHTML);
+
+            var list = [];
+            list.push(cells[1].innerHTML, cells[2].innerHTML, cells[3].innerHTML);
+            console.log(list);
+
             $('#ModalNoOrder').val($.trim(cells[1].innerHTML));
             $('#ModalTglPakai').val($.trim(cells[2].innerHTML));
             $('#ModalJamJemput').val($.trim(cells[3].innerHTML));
+            var aa = cells[1].innerHTML;
+            console.log(aa);
+            document.getElementById("ModalNoOrder").value = cells[1].innerHTML;
+
+            $('#myModal13').modal('toggle');
+
         });
-        
+
+
+
     }
+
+</script>
+<script type="text/javascript">
+    $(".use-address").click(function () {
+        try {
+            document.getElementById("TableMasuk").deleteRow(1);
+
+            var $row = $(this).closest("tr");
+            var $text = $row.find(".nr1").text(); // Find the text
+            var $text2 = $row.find(".nr2").text();
+            var $text3 = $row.find(".nr3").text();
+            var $text4 = $row.find(".nr4").text();
+            // Let's test it out
+
+            var list = [];
+            list.push($text, $text2, $text3, $text4);
+            console.log(list);
+
+            var $table = $('#tblAppendHere');
+            $table.append(
+                '<tr>' +
+
+                '<td>' + $text + '</td>' +
+                '<td>' + $text2 + '</td>' +
+                '<td>' + $text3 + '</td>'
+
+                + '</tr>'
+            )
+
+            alert($text + "," + $text2 + "," + $text3 + "," + $text4);
+        }
+        catch{
+
+            var $row = $(this).closest("tr");
+            var $text = $row.find(".nr1").text(); // Find the text
+            var $text2 = $row.find(".nr2").text();
+            var $text3 = $row.find(".nr3").text();
+            var $text4 = $row.find(".nr4").text();
+            // Let's test it out
+
+            var list = [];
+            list.push($text, $text2, $text3, $text4);
+            console.log(list);
+
+            var $table = $('#tblAppendHere');
+            $table.append(
+                '<tr>' +
+
+                '<td>' + $text + '</td>' +
+                '<td>' + $text2 + '</td>' +
+                '<td>' + $text3 + '</td>'
+
+                + '</tr>'
+            )
+
+            alert($text + "," + $text2 + "," + $text3 + "," + $text4);
+        }
+
+
+
+    });
 </script>
