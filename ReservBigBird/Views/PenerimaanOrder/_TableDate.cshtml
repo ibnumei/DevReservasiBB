@@ -1,21 +1,54 @@
-﻿@model IEnumerable<ReservBigBird.APIModel.TerimaOrder2>
+﻿@model IEnumerable<ReservBigBird.Models.ModelList>
 
 @if (ViewBag.tgl != null)
 {
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Max</th>
+                <th>Min</th>
+                <th>Jml Submit Bus</th>
                 <th>@ViewBag.bus</th>
+
+                <th>Aksi</th>
+
                 @for (int i = 0; i < ViewBag.tgl.Count; i++)
                 {
                     <th>@ViewBag.tgl[i]</th>
                 }
-                <th>Stock</th>
+
             </tr>
+
         </thead>
         <tbody>
+            @foreach (var aa in Model)
+            {
+                <tr>
+                    <td>@aa.Angka.Max()</td>
+                    <td>@aa.Angka.Min()</td>
+                    <td>@ViewBag.JmlBus</td>
+                    <td>@aa.Pool</td>
 
-            @foreach(var aa in Model)
+                    <td>
+                        @if(aa.Angka.Min() < ViewBag.JmlBus)
+                        {
+                            <button class="btn btn-default" disabled>Tidak Bisa</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary">Bisa</button>
+                        }
+                    </td>
+
+                    @foreach (int i in aa.Angka)
+                    {
+                        <td>@i</td>
+                    }
+                    
+                </tr>
+            }
+
+            @*@foreach(var aa in Model)
             {
                 <tr>
                     <td>@aa.poolName</td>
@@ -26,30 +59,10 @@
                     }
 
                     <td>@aa.stc</td>
+                    <td>@aa.listJml.Max()</td>
                 </tr>
-            }
+            }*@
 
-
-            @*@foreach (var aa in ViewBag.tes1)
-                {
-                    <tr>
-                        <td>@aa.poolName</td>
-                        @foreach (var bb in aa.listJml)
-                        {
-                            <td>@bb.jml</td>
-                        }
-
-                        @foreach(var bb in aa.data)
-                        {
-                            <td>@bb.poolName</td>
-                            foreach(var cc in bb.listJml)
-                            {
-                                <td>@cc.jml</td>
-                            }
-                        }
-
-                    </tr>
-                }*@
 
         </tbody>
     </table>

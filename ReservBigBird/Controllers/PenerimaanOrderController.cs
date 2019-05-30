@@ -24,7 +24,10 @@ namespace ReservBigBird.Controllers
 
         public ActionResult _TableDate(PenerimaOrder penerimaOrder)
         {
-            
+             List<ModelList> isi = new List<ModelList>();
+            isi.Add(new ModelList { Pool = "acc1", Angka = new int[] { 10, 5, 6 } });
+            isi.Add(new ModelList { Pool = "acc2", Angka = new int[] { 4, 7, 8 } });
+
             String tglawal = penerimaOrder.tglawalpilih.Substring(3, 2) + "/" + penerimaOrder.tglawalpilih.Substring(0, 2) + "/" + penerimaOrder.tglawalpilih.Substring(6, 4);
 
             String tglakhir = penerimaOrder.tglakhirpilih.Substring(3, 2) + "/" + penerimaOrder.tglakhirpilih.Substring(0, 2) + "/" + penerimaOrder.tglakhirpilih.Substring(6, 4);
@@ -44,8 +47,11 @@ namespace ReservBigBird.Controllers
 
             ViewBag.bus = penerimaOrder.JenisBus;
             ViewBag.tgl = allDates.ToList();
+            ViewBag.JmlBus = penerimaOrder.JumlahBus;
+            return PartialView("_TableDate", isi);
 
-
+            //========================================================================================================================
+            /*
             String response = "";
             var credentials = new NetworkCredential("ac", "123");
             var handler = new HttpClientHandler { Credentials = credentials }; // for validation
@@ -97,6 +103,8 @@ namespace ReservBigBird.Controllers
             }
 
             //return PartialView("_TableDate", allDates.ToList());
+            */
         }
+
     }
 }

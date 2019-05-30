@@ -197,6 +197,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\ModelList.cs" />
+    <Compile Include="Models\ModelListIsi.cs" />
     <Compile Include="Models\ParamMonitorOrder.cs" />
     <Compile Include="Models\ParamPlanning.cs" />
     <Compile Include="Models\PenerimaOrder.cs" />
