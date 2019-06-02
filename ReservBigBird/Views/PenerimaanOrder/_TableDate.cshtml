@@ -2,6 +2,20 @@
 
 @if (ViewBag.tgl != null)
 {
+    <div>
+        <iframe style="display:none" onload="countdown()"></iframe>
+        <!-- <button onclick="countdown()">Try it</button> -->
+        Time Left ::
+        <input id="minutes" type="text" style="width: 10px;
+             border: none; font-size: 16px;
+            font-weight: bold; color: black;"><font size="5">
+            :
+        </font>
+        <input id="seconds" type="text" style="width: 20px;
+                        border: none; font-size: 16px;
+                        font-weight: bold; color: black;">
+    </div>
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -20,7 +34,7 @@
             </tr>
 
         </thead>
-        <tbody>
+        <tbody id="tbodyID">
             @foreach (var aa in Model)
             {
                 <tr>
@@ -30,13 +44,13 @@
                     <td>@aa.Pool</td>
 
                     <td>
-                        @if(aa.Angka.Min() < ViewBag.JmlBus)
+                        @if (aa.Angka.Min() < ViewBag.JmlBus)
                         {
-                            <button class="btn btn-default" disabled>Tidak Bisa</button>
+                            <a class="btn btn-default" disabled>Tidak Bisa</a>
                         }
                         else
                         {
-                            <button class="btn btn-primary">Bisa</button>
+                            <a onclick="get()" class="btn btn-primary">Bisa</a>
                         }
                     </td>
 
@@ -44,27 +58,106 @@
                     {
                         <td>@i</td>
                     }
-                    
+
                 </tr>
             }
 
             @*@foreach(var aa in Model)
-            {
-                <tr>
-                    <td>@aa.poolName</td>
+                {
+                    <tr>
+                        <td>@aa.poolName</td>
 
-                    @foreach(var bb in aa.listJml)
-                    {
-                        <td>@bb.jml</td>
-                    }
+                        @foreach(var bb in aa.listJml)
+                        {
+                            <td>@bb.jml</td>
+                        }
 
-                    <td>@aa.stc</td>
-                    <td>@aa.listJml.Max()</td>
-                </tr>
-            }*@
+                        <td>@aa.stc</td>
+                        <td>@aa.listJml.Max()</td>
+                    </tr>
+                }*@
 
 
         </tbody>
     </table>
 }
+<script>
 
+        //set minutes
+        var mins = 0.12;
+        var trigger = 0;
+        //calculate the seconds
+        var secs = 5;
+
+        //countdown function is evoked when page is loaded
+        function countdown() {
+            setTimeout('Decrement()', 60);
+        }
+
+        //Decrement function decrement the value.
+        function Decrement() {
+            if (document.getElementById) {
+                minutes = document.getElementById("minutes");
+                seconds = document.getElementById("seconds");
+                tombol = document.getElementById("tombol");
+                
+                //if less than a minute remaining
+                //Display only seconds value.
+                if (seconds < 59) {
+                    seconds.value = secs;
+                }
+
+                //Display both minutes and seconds
+                //getminutes and getseconds is used to
+                //get minutes and seconds
+                else {
+                    minutes.value = getminutes();
+                    seconds.value = getseconds();
+                }
+                //when less than a minute remaining
+                //colour of the minutes and seconds
+                //changes to red
+                if (mins < 1) {
+                    minutes.style.color = "red";
+                    seconds.style.color = "red";
+                }
+                //if seconds becomes zero,
+                //then page alert time up
+                if (mins < 0) {
+
+                    //alert('time up');
+                    minutes.value = 0;
+                    seconds.value = 0;
+                    //tombol.disabled = true;
+                    //$('#tbodyID').find('a').prop('disabled', true);
+                    trigger = 1;
+                }
+                //if seconds > 0 then seconds is decremented
+                else {
+                    secs--;
+                    setTimeout('Decrement()', 1000);
+                }
+            }
+        }
+
+        function getminutes() {
+            //minutes is seconds divided by 60, rounded down
+            mins = Math.floor(secs / 60);
+            return mins;
+        }
+
+        function getseconds() {
+            //take minutes remaining (as seconds) away
+            //from total seconds remaining
+            return secs - Math.round(mins * 60);
+        }
+
+    function get() {
+        if (trigger == 1) {
+            alert('Times up');
+        }
+        else {
+            alert(' No Times up');
+        }
+    }
+</script>
