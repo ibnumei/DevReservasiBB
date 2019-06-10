@@ -25,8 +25,8 @@ namespace ReservBigBird.Controllers
         public ActionResult _TableDate(PenerimaOrder penerimaOrder)
         {
              List<ModelList> isi = new List<ModelList>();
-            isi.Add(new ModelList { Pool = "acc1", Angka = new int[] { 10, 5, 6 } });
-            isi.Add(new ModelList { Pool = "acc2", Angka = new int[] { 4, 7, 8 } });
+            isi.Add(new ModelList { Pool = "acc1", Angka = new int[] { 10, 4, 4 } });
+            isi.Add(new ModelList { Pool = "acc2", Angka = new int[] { 3, 3, 8 } });
 
             String tglawal = penerimaOrder.tglawalpilih.Substring(3, 2) + "/" + penerimaOrder.tglawalpilih.Substring(0, 2) + "/" + penerimaOrder.tglawalpilih.Substring(6, 4);
 
@@ -104,6 +104,21 @@ namespace ReservBigBird.Controllers
 
             //return PartialView("_TableDate", allDates.ToList());
             */
+        }
+
+        public ActionResult _TableHasilInput(String tglawalpilih)
+        {
+            if(tglawalpilih != null)
+            {
+                NewDevbigbirdEntities db = new NewDevbigbirdEntities();
+                var tes = db.LoginNewTbls.ToList();
+                ViewBag.NotNull = "Tidak Null";
+                return PartialView("_TableHasilInput", db.LoginNewTbls.ToList());
+            }
+            else
+            {
+                return PartialView("_TableHasilInput");
+            }
         }
 
     }

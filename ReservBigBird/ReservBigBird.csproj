@@ -149,7 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="APIModel\ModelAPI.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -171,6 +171,7 @@
     <Compile Include="Controllers\ServerSideDTController.cs" />
     <Compile Include="Controllers\TerimaOrderController.cs" />
     <Compile Include="Controllers\TerimaOrderProdRevisiController.cs" />
+    <Compile Include="Controllers\TesBaruApusController.cs" />
     <Compile Include="Controllers\TestMobileIDController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,7 +180,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="LoginNewTbl.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -196,6 +197,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model2.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\ModelList.cs" />
     <Compile Include="Models\ModelListIsi.cs" />
@@ -204,10 +220,10 @@
     <Compile Include="Models\PenerimaOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Role_Account.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\MyAuthorizeAttribute.cs" />
@@ -6643,6 +6659,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Model2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model2.edmx</DependentUpon>
+      <LastGenOutput>Model2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model2.edmx</DependentUpon>
+      <LastGenOutput>Model2.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bower_components\bootstrap-colorpicker\.bower.json" />
@@ -7149,6 +7175,13 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Model2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model2.edmx.diagram">
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -7196,6 +7229,9 @@
     <Content Include="Views\PlanningProd\_TableDisplayPlanning.cshtml" />
     <Content Include="Views\MonitorProd\_ModalMonitorOrder.cshtml" />
     <Content Include="Views\TerimaOrderProdRevisi\Index.cshtml" />
+    <Content Include="Views\PenerimaanOrder\_TableHasilInput.cshtml" />
+    <Content Include="Views\TesBaruApus\Index.cshtml" />
+    <Content Include="Views\TesBaruApus\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />

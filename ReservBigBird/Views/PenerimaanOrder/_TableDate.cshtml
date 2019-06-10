@@ -2,6 +2,8 @@
 
 @if (ViewBag.tgl != null)
 {
+
+
     <div>
         <iframe style="display:none" onload="countdown()"></iframe>
         <!-- <button onclick="countdown()">Try it</button> -->
@@ -62,102 +64,141 @@
                 </tr>
             }
 
-            @*@foreach(var aa in Model)
-                {
-                    <tr>
-                        <td>@aa.poolName</td>
-
-                        @foreach(var bb in aa.listJml)
-                        {
-                            <td>@bb.jml</td>
-                        }
-
-                        <td>@aa.stc</td>
-                        <td>@aa.listJml.Max()</td>
-                    </tr>
-                }*@
-
-
         </tbody>
     </table>
 }
+
+<div id="renderTable2" class="box">
+
+    @Html.Partial("_TableHasilInput")
+
+</div>
+
+<div id="ModalSmall" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3>Pilih Data Berikut</h3>
+            </div>
+
+            <div class="modal-body">
+
+                <form id="FormPopup">
+                    Input Tes : <input type="text" id="tglawalpilih" name="tglawalpilih" />
+
+                    <input type="button" class="btn btn-primary btn-md" value="Pilih" id="submit2" />
+                </form>
+
+
+            </div>
+
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <script>
 
-        //set minutes
-        var mins = 0.12;
-        var trigger = 0;
-        //calculate the seconds
-        var secs = 5;
+    //set minutes
+    var mins = 0.12;
+    var trigger = 0;
+    //calculate the seconds
+    var secs = 5;
 
-        //countdown function is evoked when page is loaded
-        function countdown() {
-            setTimeout('Decrement()', 60);
-        }
+    //countdown function is evoked when page is loaded
+    function countdown() {
+        setTimeout('Decrement()', 60);
+    }
 
-        //Decrement function decrement the value.
-        function Decrement() {
-            if (document.getElementById) {
-                minutes = document.getElementById("minutes");
-                seconds = document.getElementById("seconds");
-                tombol = document.getElementById("tombol");
-                
-                //if less than a minute remaining
-                //Display only seconds value.
-                if (seconds < 59) {
-                    seconds.value = secs;
-                }
+    //Decrement function decrement the value.
+    function Decrement() {
+        if (document.getElementById) {
+            minutes = document.getElementById("minutes");
+            seconds = document.getElementById("seconds");
+            tombol = document.getElementById("tombol");
 
-                //Display both minutes and seconds
-                //getminutes and getseconds is used to
-                //get minutes and seconds
-                else {
-                    minutes.value = getminutes();
-                    seconds.value = getseconds();
-                }
-                //when less than a minute remaining
-                //colour of the minutes and seconds
-                //changes to red
-                if (mins < 1) {
-                    minutes.style.color = "red";
-                    seconds.style.color = "red";
-                }
-                //if seconds becomes zero,
-                //then page alert time up
-                if (mins < 0) {
+            //if less than a minute remaining
+            //Display only seconds value.
+            if (seconds < 59) {
+                seconds.value = secs;
+            }
 
-                    //alert('time up');
-                    minutes.value = 0;
-                    seconds.value = 0;
-                    //tombol.disabled = true;
-                    //$('#tbodyID').find('a').prop('disabled', true);
-                    trigger = 1;
-                }
-                //if seconds > 0 then seconds is decremented
-                else {
-                    secs--;
-                    setTimeout('Decrement()', 1000);
-                }
+            //Display both minutes and seconds
+            //getminutes and getseconds is used to
+            //get minutes and seconds
+            else {
+                minutes.value = getminutes();
+                seconds.value = getseconds();
+            }
+            //when less than a minute remaining
+            //colour of the minutes and seconds
+            //changes to red
+            if (mins < 1) {
+                minutes.style.color = "red";
+                seconds.style.color = "red";
+            }
+            //if seconds becomes zero,
+            //then page alert time up
+            if (mins < 0) {
+
+                //alert('time up');
+                minutes.value = 0;
+                seconds.value = 0;
+                //tombol.disabled = true;
+                //$('#tbodyID').find('a').prop('disabled', true);
+                trigger = 1;
+            }
+            //if seconds > 0 then seconds is decremented
+            else {
+                secs--;
+                setTimeout('Decrement()', 1000);
             }
         }
+    }
 
-        function getminutes() {
-            //minutes is seconds divided by 60, rounded down
-            mins = Math.floor(secs / 60);
-            return mins;
-        }
+    function getminutes() {
+        //minutes is seconds divided by 60, rounded down
+        mins = Math.floor(secs / 60);
+        return mins;
+    }
 
-        function getseconds() {
-            //take minutes remaining (as seconds) away
-            //from total seconds remaining
-            return secs - Math.round(mins * 60);
-        }
+    function getseconds() {
+        //take minutes remaining (as seconds) away
+        //from total seconds remaining
+        return secs - Math.round(mins * 60);
+    }
 
     function get() {
         if (trigger == 1) {
             alert('Times up');
         }
         else {
-            alert(' No Times up');
+            //alert(' No Times up');
+            $('#ModalSmall').modal('toggle');
         }
     }
 </script>
+<script>
+
+    $(document).ready(function () {
+        $('#submit2').on('click', function () {
+            var tesnu3 = $('#FormPopup').serialize();
+            console.log(tesnu3);
+            $('#renderTable2').load("_TableHasilInput", $('#FormPopup').serialize());
+        });
+    });
+
+</script>
+
+<style>
+    #renderTable2 {
+        background-color: white;
+    }
+</style>

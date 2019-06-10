@@ -1,0 +1,31 @@
+﻿@model IQueryable<ReservBigBird.LoginNewTbl>
+
+@if (ViewBag.NotNull != null)
+{
+
+
+    <script>
+        $('#ModalSmall').modal('hide');
+    </script>
+
+    <h1>Table Hasil Input</h1>
+    <table>
+        <thead>
+            <tr>id</tr>
+            <tr>username</tr>
+            <tr>email</tr>
+            <tr>pass</tr>
+        </thead>
+        <tbody>
+            @foreach (var aa in Model)
+            {
+                <tr>
+                    <td>@aa.id</td>
+                    <td>@aa.username</td>
+                    <td>@aa.email</td>
+                    <td>@aa.pass</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

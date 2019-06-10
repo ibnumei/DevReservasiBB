@@ -430,3 +430,11 @@ C:\Users\ibnu.fauzi\source\repos\ibnu\DevReservasiBB\ReservBigBird\obj\Debug\Res
 C:\Users\ibnu.fauzi\source\repos\ibnu\DevReservasiBB\ReservBigBird\obj\Debug\ReservBigBird.csproj.CopyComplete
 C:\Users\ibnu.fauzi\source\repos\ibnu\DevReservasiBB\ReservBigBird\obj\Debug\ReservBigBird.dll
 C:\Users\ibnu.fauzi\source\repos\ibnu\DevReservasiBB\ReservBigBird\obj\Debug\ReservBigBird.pdb
+C:\Users\ibnu.fauzi\source\repos\DevReservasiBB\ReservBigBird\bin\Swashbuckle.Core.dll
+C:\Users\ibnu.fauzi\source\repos\DevReservasiBB\ReservBigBird\bin\System.Net.Http.Formatting.dll
+C:\Users\ibnu.fauzi\source\repos\DevReservasiBB\ReservBigBird\bin\System.Web.Http.dll
+C:\Users\ibnu.fauzi\source\repos\DevReservasiBB\ReservBigBird\bin\System.Web.Http.WebHost.dll
+C:\Users\ibnu.fauzi\source\repos\DevReservasiBB\ReservBigBird\bin\WebActivatorEx.dll
+C:\Users\ibnu.fauzi\source\repos\DevReservasiBB\ReservBigBird\bin\System.Net.Http.Formatting.xml
+C:\Users\ibnu.fauzi\source\repos\DevReservasiBB\ReservBigBird\bin\System.Web.Http.xml
+C:\Users\ibnu.fauzi\source\repos\DevReservasiBB\ReservBigBird\bin\System.Web.Http.WebHost.xml
